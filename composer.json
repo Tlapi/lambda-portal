@@ -1,5 +1,9 @@
 {
     "name": "tlapi/lambda-portal",
+    "license": "MIT",
+    "type": "project",
+    "description": "Package that makes Laravel jobs running on AWS Lambda with Bref",
+    "keywords": ["bref", "serverless", "aws", "lambda", "faas"],
     "authors": [
         {
             "name": "Tlapi",
