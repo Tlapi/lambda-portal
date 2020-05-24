@@ -1,0 +1,23 @@
+{
+    "name": "tlapi/lambda-portal",
+    "authors": [
+        {
+            "name": "Tlapi",
+            "email": "jan@ecomail.cz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Tlapi\\LambdaPortal\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.3",
+        "ext-json": "*",
+        "bref/bref": "~0.5.20",
+        "illuminate/queue": "^6.0|^7.0",
+        "illuminate/support": "^6.0|^7.0",
+        "aws/aws-sdk-php": "^3.134"
+    }
+}
