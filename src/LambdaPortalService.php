@@ -10,6 +10,8 @@ use Illuminate\Queue\Jobs\SyncJob;
 class LambdaPortalService
 {
 
+    public const CONNECTION_NAME = 'lambda-portal';
+
     /**
      * @var \Aws\Lambda\LambdaClient
      */
@@ -30,7 +32,7 @@ class LambdaPortalService
 
     public function processJobByLambda($container, array $payload)
     {
-        $queueJob = new SyncJob($container, json_encode($payload), 'lambda-sync', 'lambda-sync');
+        $queueJob = new SyncJob($container, json_encode($payload), self::CONNECTION_NAME, self::CONNECTION_NAME);
         $queueJob->fire();
     }
 
