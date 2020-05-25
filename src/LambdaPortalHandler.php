@@ -25,6 +25,6 @@ class LambdaPortalHandler extends LaravelJobHandler
         echo 'handleSqs';
         var_dump($event);
         var_dump($context);
-        $lambdaPortalService->processJobByLambda($context, $event);
+        $lambdaPortalService->processJobByLambda($this->container, $event);
     }
 }

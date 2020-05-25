@@ -32,6 +32,7 @@ class LambdaPortalService
 
     public function processJobByLambda($container, array $payload)
     {
+        echo 'processJobByLambda';
         $queueJob = new SyncJob($container, json_encode($payload), self::CONNECTION_NAME, self::CONNECTION_NAME);
         $queueJob->fire();
     }
