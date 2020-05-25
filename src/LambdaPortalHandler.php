@@ -2,6 +2,7 @@
 
 namespace Tlapi\LambdaPortal;
 
+use Bref\Context\Context;
 use Illuminate\Container\Container;
 
 /**
@@ -19,10 +20,11 @@ class LambdaPortalHandler extends LaravelJobHandler
         $this->container = $container;
     }
 
-    public function handleJob($event, $context): void
+    public function handleJob(array $event, Context $context, LambdaPortalService $lambdaPortalService): void
     {
         echo 'handleSqs';
         var_dump($event);
         var_dump($context);
+        $lambdaPortalService->processJobByLambda($context, $event);
     }
 }

@@ -13,8 +13,8 @@ abstract class LaravelJobHandler implements Handler
     abstract public function handleJob($event, Context $context): void;
 
     /** {@inheritDoc} */
-    public function handle($event, Context $context): void
+    public function handle(array $event, Context $context, LambdaPortalService $lambdaPortalService): void
     {
-        $this->handleJob($event, $context);
+        $this->handleJob($event, $context, $lambdaPortalService);
     }
 }
