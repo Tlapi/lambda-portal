@@ -25,8 +25,14 @@ class LambdaPortalService
 
     public function sendJobToLambda(Job $job): Result
     {
+        $functionName = config(sprintf('queue.%s.functions.%s', $job->getConnectionName(), $job->getQueue()), config(sprintf('queue.default_lambda_function', $job->getConnectionName())));
+
+        if($functionName === null) {
+            throw new FunctionNameEmpty();
+        }
+
         return $this->client->invoke([
-            'FunctionName' => config(sprintf('queue.%s.functions.%s', $job->getConnectionName(), $job->getQueue()), config(sprintf('queue.%s.default_function', $job->getConnectionName()))),
+            'FunctionName' => $functionName,
             'Payload' => $job->getRawBody(),
         ]);
     }

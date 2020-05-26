@@ -15,7 +15,7 @@ trait DispatchedOnLambda
     {
         if($this->job->getConnectionName() !== LambdaPortalService::CONNECTION_NAME) {
             $lambdaPortalService = new LambdaPortalService();
-            $lambdaPortalService->sendJobToLambda($this->job->getRawBody());
+            $lambdaPortalService->sendJobToLambda($this->job);
 
             return ;
         }
