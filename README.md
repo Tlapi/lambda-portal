@@ -14,17 +14,17 @@ In your queue config file:
 
 ```
 'lambda-sync' => [
-    'driver' => 'sqs',
-    'key' => env('AWS_KEY'),
+    'driver' => 'sqs', // or any other driver
+    'key' => env('AWS_KEY'), // you AWS cerdentials will be used to invoke your lambda
     'secret' => env('AWS_SECRET'),
     'region' => env('AWS_REGION'),
     'version' => 'latest',
     'functions' => [
-        'queue-name' => 'function-name',
+        'queue-name' => 'function-name', // function per queue, if needed
     ],
 ],
 
-'default_lambda_function' => 'default-function-name',
+'default_lambda_function' => 'default-function-name', // default function will be called if no function is specified for queue
 ```
 
 You can specify function for a queue and have default function running all other jobs.
