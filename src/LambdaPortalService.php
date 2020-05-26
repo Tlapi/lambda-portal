@@ -4,6 +4,7 @@ namespace Tlapi\LambdaPortal;
 
 use Aws\Lambda\LambdaClient;
 use Aws\Result;
+use Illuminate\Queue\Jobs\Job;
 use Illuminate\Queue\Jobs\SqsJob;
 use Illuminate\Queue\Jobs\SyncJob;
 
@@ -22,11 +23,11 @@ class LambdaPortalService
         $this->client = new LambdaClient(config('queue.connections.lambda-sync'));
     }
 
-    public function sendJobToLambda(string $payload): Result
+    public function sendJobToLambda(Job $job): Result
     {
         return $this->client->invoke([
-            'FunctionName' => 'ecm-lambda-sqs-worker-dev-worker',
-            'Payload' => $payload,
+            'FunctionName' => config(sprintf('queue.%s.functions.%s', $job->getConnectionName(), $job->getQueue()), config(sprintf('queue.%s.default_function', $job->getConnectionName()))),
+            'Payload' => $job->getRawBody(),
         ]);
     }
 
