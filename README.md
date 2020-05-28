@@ -23,9 +23,7 @@ In your queue config file:
     'secret' => env('AWS_SECRET'),
     'region' => env('AWS_REGION'),
     'version' => 'latest',
-    'functions' => [
-        'queue-name' => 'function-name', // function per queue, if needed
-    ],
+    'function' => 'lambda-function-name',
 ],
 
 'default_lambda_function' => 'default-function-name', // default function will be called if no function is specified for queue
