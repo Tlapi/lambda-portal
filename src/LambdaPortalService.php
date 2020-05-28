@@ -25,7 +25,7 @@ class LambdaPortalService
 
     public function sendJobToLambda(Job $job): Result
     {
-        $functionName = config(sprintf('queue.%s.function', $job->getConnectionName()), config(sprintf('queue.default_lambda_function', $job->getConnectionName())));
+        $functionName = config(sprintf('queue.connections.%s.function', $job->getConnectionName()), config(sprintf('queue.default_lambda_function', $job->getConnectionName())));
 
         if($functionName === null) {
             throw new FunctionNameEmpty();
