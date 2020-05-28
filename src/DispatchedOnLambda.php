@@ -13,7 +13,7 @@ trait DispatchedOnLambda
      */
     public function runOnLambda(Closure $something): void
     {
-        if($this->job->getConnectionName() !== LambdaPortalService::CONNECTION_NAME) {
+        if($this->job->getConnectionName() !== LambdaPortalService::CONNECTION_NAME && env('APP_ENV') === 'production') {
             $lambdaPortalService = new LambdaPortalService();
             $lambdaPortalService->sendJobToLambda($this->job);
 
