@@ -2,6 +2,10 @@
 
 Run your Jobs effortlessly on AWS Lambda. You can even use Horizon, SQS workers or anything you ever wanted. All you need is just thin client running your queue worker for interaction. And all your jobs will be processed by Lambda Functions.
 
+# Why?
+
+Some jobs may require much more memory then others. And you maybe dont want to over-provision you instance running your queue worker. This way, you can run these jobs on lambda and keep your worker instance small.
+
 # Prerequsities
 
 You need to have your Lambda ready. This package uses [bref/bref](https://github.com/brefphp/bref)
