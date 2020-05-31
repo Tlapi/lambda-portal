@@ -1,0 +1,31 @@
+service: lambda-jobs-worker
+
+provider:
+    name: aws
+    region: eu-west-1
+    runtime: provided
+    environment:
+        APP_ENV: production
+        VIEW_COMPILED_PATH: /tmp/storage/framework/views
+        SESSION_DRIVER: array
+        APP_SERVICES_CACHE: /tmp/services.php
+        APP_PACKAGES_CACHE: /tmp/packages.php
+        APP_ROUTES_CACHE: /tmp/routes.php
+
+functions:
+
+    worker:
+        handler: public/worker.php
+        timeout: 30
+        memorySize: 2048
+        layers:
+            - ${bref:layer.php-73}
+
+package:
+    exclude:
+        - node_modules/**
+        - storage/**
+        - tests/**
+
+plugins:
+    - ./vendor/bref/bref
