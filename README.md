@@ -12,6 +12,10 @@ You need to have your Lambda ready. This package uses [bref/bref](https://github
 
 # Usage
 
+## Entry point
+
+Copy `worker.php` from this repo to your `public` folder or anywhere else specified in your serverless config. You can check servereless config demo in this repo.
+
 ## Config
 
 In your queue config file:
