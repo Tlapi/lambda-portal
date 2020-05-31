@@ -12,6 +12,10 @@ You need to have your Lambda ready. This package uses [bref/bref](https://github
 
 # Usage
 
+## Packaging for Lambda
+
+We use [bref/bref](https://github.com/brefphp/bref) and `bref/laravel-bridge` package to use our Laravel app on Lambda. You can use same settings as in provided serverless config and then just `serverless deploy` 😎
+
 ## Entry point
 
 Copy `worker.php` from this repo to your `public` folder or anywhere else specified in your serverless config. You can check servereless config demo in this repo.
